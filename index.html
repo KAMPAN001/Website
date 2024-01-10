@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Projekt inżynierski</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="js/enums.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/calculations.js"></script>
+    <script src="js/maszyna_dc_rvar.js"></script>
+    <script src="js/replacing_photos_for_the_BUCK_converter.js"></script>
+    <script src="js/converter_BOOST_continuous_operation.js"></script>
+    <script src="js/converter_BOOST_output_characteristic.js"></script>
+    <script src="js/converter_BOOST_impuls_operation.js"></script>
+    <script src="js/converter_BOOST_V0_const_characteristic.js"></script>
+    <script src="js/converter_BUCK_continuous_operation.js"></script>
+    <script src="js/converter_BUCK_impuls_operation.js"></script>
+    <script src="js/converter_BUCK_output_characteristic.js"></script>
+    <script src="js/converter_BUCK_V0_const_characteristic.js"></script>
+    <script src="js/converter_FORWARD.js"></script>
+    <script type="text/javascript">
+        window.onload = function (e) {
+            document.getElementById("mDC").checked = false;
+            document.getElementById("BUCK").checked = false;
+            document.getElementById("BOOST").checked = false;
+            document.getElementById("FORWARD").checked = false;
+
+
+            var div = document.getElementById("maszynaDC");
+            div.style.display = "none";
+            div = document.getElementById("converterBUCK");
+            div.style.display = "none";
+            div = document.getElementById("converterBOOST");
+            div.style.display = "none";
+            div = document.getElementById("converterFORWARD");
+            div.style.display = "none";
+
+        }
+
+        function showDiv(event) {
+            var div = document.getElementById(event.target.name);
+            (event.target.checked) ? div.style.display = "block" : div.style.display = "none";
+        }
+    </script>
+</head>
+
+<body>
+    <label for="maszynaDC">Maszyna DC</label><input type="checkbox" id="mDC" name="maszynaDC" value="maszynaDC"
+        onclick="showDiv(event);" />
+    <label for="converterBUCK">ConverterBUCK</label><input type="checkbox" id="BUCK" name="converterBUCK"
+        value="converterBUCK" onclick="showDiv(event);" />
+    <label for="converterBOOST">ConverterBOOST</label><input type="checkbox" id="BOOST" name="converterBOOST"
+        value="converterBOOST" onclick="showDiv(event);" />
+    <label for="converterFORWARD">ConverterFORWARD</label><input type="checkbox" id="FORWARD" name="converterFORWARD"
+        value="converterFORWARD" onclick="showDiv(event);" />
+
+    <div id="maszynaDC">
+        <!-- A part of my projecky with one had been reapir-->
+        <h1>Maszyna DC</h1>
+        <script>maszynaDcRvar(680, 300, 0, 60, 0.1, 0, 0, 12, 0, 0, 180, 0, 0, 30, 0, 0, 160, 0, 2, 50, 5, 50, 1, 10, 1, 25, Color.Blue, Color.Black, Color.Green, Color.Black, Color.Orange, 9.3, 24.5);</script>
+    </div>
+
+    <!--It's part of code with function for BUCK converter -->
+    <div id="converterBUCK">
+        <h1>ConverterBUCK</h1>
+
+        <!-- <script>change_photos();</script> -->
+        <script>converter_BUCK_continuous_operation_in_time(680, 450, 0.1, 0.80, 0.01, 0.1, 0, 3, 0, -510, 30, 0, 0, 5, 0, 0, 30, 0, 1, 511, 1, 5, 1, 10, 1, 10, 4.5, 10.5, 0.2, 7.5, Color.Blue, Color.Green, Color.Purple, Color.Blue, Color.Red, Color.Green, Color.Pink, Color.Black, Color.Orange);</script>
+        <script>converter_BUCK_impuls_operation_in_time(680, 200, 0.1, 0.80, 0.01, 0.1, 0, 3, 0, -110, 30, 0, 0, 5, 0, 0, 30, 0, 1, 511, 1, 5, 1, 10, 1, 10, 4.5, 8.5, 0.2, 6.5, Color.Blue, Color.Green, Color.Purple, Color.Blue, Color.Red, Color.Green, Color.Pink, Color.Black, Color.Orange);</script>
+        <script>converter_BUCK_output_characteristic(680, 300, 0.20, 0.80, 0.01, 0.20, 0, 0.5, 1, 0, 1, 1, 0.1, 0.1, 0.1, 1, Color.Blue, Color.Green, Color.Purple, Color.Blue, Color.Red, Color.Green, Color.Pink, Color.Black, Color.Orange);</script>
+        <script>converter_BUCK_V0_const_characteristic(680, 300, 0.1, 0.70, 0.01, 0.1, 0, 1, 1, 0, 1, 1, 0.1, 0.5, 0.1, 0.1, Color.Blue, Color.Green, Color.Purple, Color.Blue, Color.Red, Color.Green, Color.Pink, Color.Black, Color.Orange);</script>
+
+    </div>
+
+    <!--It's part of code with function for BOOST converter -->
+    <div id="converterBOOST">
+        <h1>ConverterBOOST</h1>
+
+        <script>converter_BOOST_continuous_operation_in_time(680, 450, 0.1, 0.80, 0.01, 0.1, 0, 3, 0, -510, 30, 0, 0, 5, 0, 0, 30, 0, 1, 511, 1, 5, 1, 10, 1, 10, 4.5, 10.5, 0.2, 7.5, Color.Blue, Color.Green, Color.Purple, Color.Blue, Color.Red, Color.Green, Color.Pink, Color.Black, Color.Orange);</script>
+        <script>converter_BOOST_impuls_operation_in_time(680, 450, 0.1, 0.80, 0.01, 0.1, 0, 3, 0, -510, 30, 0, 0, 5, 0, 0, 30, 0, 1, 511, 1, 5, 1, 10, 1, 10, 4.5, 8.5, 0.2, 6.5, Color.Blue, Color.Green, Color.Purple, Color.Blue, Color.Red, Color.Green, Color.Pink, Color.Black, Color.Orange);</script>
+        <script>converter_BOOST_output_characteristic(680, 300, 0.20, 0.80, 0.01, 0.20, 0, 0.5, 1, 0, 10, 0.01, 0.1, 1, 0.1, 1, Color.Blue, Color.Green, Color.Purple, Color.Blue, Color.Red, Color.Green, Color.Pink, Color.Black, Color.Orange);</script>
+        <script>converter_BOOST_V0_const_characteristic(680, 300, 1.5, 4, 0.01, 3, 0, 1, 1, 0, 1, 1, 0.1, 0.5, 0.1, 0.1, Color.Blue, Color.Green, Color.Purple, Color.Blue, Color.Red, Color.Green, Color.Pink, Color.Black, Color.Orange);</script>
+
+    </div>
+
+    <!--It's part of code with function for FORWARD converter -->
+    <div id="converterFORWARD">
+        <h1>ConverterFORWARD</h1>
+
+        <!-- <converter_FORWARD <---N3=N1</script> -->
+        <script>converter_FORWARD(680, 450, 0.1, 0.50, 0.01, 0.1, 0, 3, 0, -510, 30, 0, 0, 5, 0, 0, 30, 0, 1, 511, 1, 5, 1, 10, 1, 10, 4.5, 10.5, 0.2, 7.5, Color.Blue, Color.Green, Color.Purple, Color.Blue, Color.Red, Color.Green, Color.Pink, Color.Black, Color.Orange);</script>
+
+    </div>
+
+</body>
+
+</html>
